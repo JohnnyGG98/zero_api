@@ -1,9 +1,12 @@
 <?php 
 
-include_once 'src/Curso/CursoAPI.php';
+//include_once 'src/models/curso/cursoapi.php';
+//$curso = new CursoAPI(); 
+//$curso->cargarTodos();
 
-$curso = new CursoAPI(); 
+include_once 'src/controllers/controladorapi.php';
 
-$curso->cargarTodos();
+$ctr = new ControladorAPI();
+$ctr->obtenerUrl();
 
 ?>

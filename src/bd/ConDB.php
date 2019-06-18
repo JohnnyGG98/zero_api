@@ -20,5 +20,21 @@ class ConDB {
       return null; 
     }
   }
+
+  function sql($query) {
+    $ct = $this->con->getCon();
+    try {
+      if($ct != null){
+        $res = $ct->query($query);
+        return $res; 
+      }else{
+        return null;
+      }
+    } catch (\Exception $e) {
+      echo $e->getMessage();
+      return null; 
+    }
+  }
+
 }
 ?>

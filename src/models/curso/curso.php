@@ -5,9 +5,11 @@ class Curso extends ConDB {
 
   private $BASEQUERY = '
   SELECT
+  pl.id_prd_lectivo,
   prd_lectivo_nombre,
   persona_primer_nombre, 
   persona_primer_apellido,
+  c.id_curso,
   curso_nombre,
   curso_ciclo, 
   curso_capacidad,
@@ -20,7 +22,7 @@ class Curso extends ConDB {
   c.id_prd_lectivo = pl.id_prd_lectivo AND 
   d.id_docente = c.id_docente AND 
   p.id_persona = d.id_persona AND
-  m.id_materia = c.id_materia 
+  m.id_materia = c.id_materia
   ';
   private $ENDQUERY = '
   ORDER BY prd_lectivo_nombre

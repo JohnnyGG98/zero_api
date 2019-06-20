@@ -3,7 +3,9 @@
 class Api {
 
   function muestraJSON($array) {
-    echo '<code>'.json_encode($array).'</code>';
+    if($array != null){
+      echo '<code>'.json_encode($array).'</code>';
+    }
   }
 
   function error($mensaje) {

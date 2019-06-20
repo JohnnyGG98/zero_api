@@ -10,6 +10,26 @@ class SilaboAPI extends Api {
     $this->silabo = new Silabo(); 
   }
 
+  function todos(){
+    $res = $this->silabo->cargarSilabos();
+    $this->muestraJSON($this->obtenerJSON($res));
+  }
+
+  function buscar($aguja){
+    $res = $this->silabo->buscarSilabos($aguja);
+    $this->muestraJSON($this->obtenerJSON($res));
+  }
+
+  function periodo($aguja){
+    $res = $this->silabo->buscarSilabosPorPeriodo($aguja);
+    $this->muestraJSON($this->obtenerJSON($res));
+  }
+
+  function materia($aguja){
+    $res = $this->silabo->buscarSilabosPorMateria($aguja);
+    $this->muestraJSON($this->obtenerJSON($res));
+  }
+
   function pdf(){
     $res = $this->silabo->cargarPDF();
     $this->muestraJSON($this->obtenerPdf($res));
@@ -67,7 +87,20 @@ class SilaboAPI extends Api {
   function obtenerJSON($res){
     if($res != null){
       if($res->rowCount()) {
+        $silabos = array(); 
+        $silabos['items'] = array();
 
+        while($r = $res->fetch(PDO::FETCH_ASSOC)){
+          $i = array(
+            'id_silabo' => $r['id_silabo'],
+            'prd_lectivo_nombre' => $r['prd_lectivo_nombre'],
+            'materia_nombre' => $r['materia_nombre'],
+            'estado_silabo' => $r['estado_silabo'],
+            'cursos' => $r['cursos']
+          );
+          array_push($silabos['items'], $i);
+        }
+        return $silabos;
       }else{
         $this->error('No pudimos encontrar cursos.');
       }

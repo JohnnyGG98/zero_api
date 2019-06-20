@@ -35,9 +35,11 @@ class CursoAPI extends Api {
 
         while ($r = $res->fetch(PDO::FETCH_ASSOC)) {
           $i = array(
+            'id_prd_lectivo' => $r['id_prd_lectivo'],
             'prd_lectivo_nombre' => $r['prd_lectivo_nombre'],
             'persona_primer_nombre' => $r['persona_primer_nombre'],
             'persona_primer_apellido' => $r['persona_primer_apellido'],
+            'id_curso' => $r['id_curso'],
             'curso_nombre' => $r['curso_nombre'],
             'curso_ciclo' => $r['curso_ciclo'],
             'curso_capacidad' => $r['curso_capacidad'],

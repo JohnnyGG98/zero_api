@@ -57,7 +57,13 @@ class ControladorAPI {
     $metodo = $url[1];
     $parametro = $url[2];
 
-    $modelo->{$metodo}($parametro);
+    if (strpos($parametro, '-') !== false) {
+      $parametro = explode('-', $parametro);
+      //var_dump($parametro);
+      $modelo->{$metodo}($parametro);
+    }else{
+      $modelo->{$metodo}($parametro);
+    }
   }
 }
 

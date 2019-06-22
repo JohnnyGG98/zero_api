@@ -16,13 +16,32 @@ class CursoAPI extends Api {
     $this->muestraJSON($this->obtenerJSON($res));
   } 
 
-  function ultimos(){
-    echo "<h2>Cargamos los ultimos</h2>";
-  }
+  function periodo($id_periodo) {
+    $res = $this->curso->cargarCursosPorPeriodo($id_periodo);
+
+    $this->muestraJSON($this->obtenerJSON($res));
+  } 
+
+  function docente($identificacion) {
+    $res = $this->curso->cargarPorDoncente($identificacion);
+
+    $this->muestraJSON($this->obtenerJSON($res));
+  } 
+
+  function alumno($aguja) {
+    $res = $this->curso->buscarPorAlumno($aguja);
+
+    $this->muestraJSON($this->obtenerJSON($res));
+  } 
 
   function buscar($aguja){
     //echo "<h2>Buscamos $aguja</h2>";
-    $res = $this->curso->buscarCursos($aguja);
+    $res = null;
+    if(ctype_digit($aguja)){
+      $res = $this->curso->buscar($aguja);
+    }else{
+      $res = $this->curso->buscarCursos($aguja);
+    }
 
     $this->muestraJSON($this->obtenerJSON($res));
   }
@@ -43,6 +62,7 @@ class CursoAPI extends Api {
             'curso_nombre' => $r['curso_nombre'],
             'curso_ciclo' => $r['curso_ciclo'],
             'curso_capacidad' => $r['curso_capacidad'],
+            'id_materia' => $r['id_materia'],
             'materia_nombre' => $r['materia_nombre']
           );
 
@@ -58,5 +78,4 @@ class CursoAPI extends Api {
   }
 
 }
-
 ?>

@@ -16,7 +16,12 @@ class SilaboAPI extends Api {
   }
 
   function buscar($aguja){
-    $res = $this->silabo->buscarSilabos($aguja);
+    $res = null;
+    if(ctype_digit($aguja)){
+      $res = $this->silabo->buscar($aguja);
+    }else{
+      $res = $this->silabo->buscarPorPeriodoMateria($aguja);
+    }
     $this->muestraJSON($this->obtenerJSON($res));
   }
 
@@ -27,6 +32,16 @@ class SilaboAPI extends Api {
 
   function materia($aguja){
     $res = $this->silabo->buscarSilabosPorMateria($aguja);
+    $this->muestraJSON($this->obtenerJSON($res));
+  }
+
+  function docente($identificacion){
+    $res = $this->silabo->buscarPorDoncente($identificacion);
+    $this->muestraJSON($this->obtenerJSON($res));
+  }
+
+  function curso($id_curso){
+    $res = $this->silabo->buscarPorCurso($id_curso);
     $this->muestraJSON($this->obtenerJSON($res));
   }
 

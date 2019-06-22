@@ -41,12 +41,43 @@ class Silabo extends ConDB {
     return $this->sql($query);
   }
 
-  function buscarSilabos($aguja){
+  function buscar($id_silabo){
+    $query =  $this->BASEQUERY ."
+    AND s.id_silabo = $id_silabo
+    ". $this->ENDQUERY;
+
+    return $this->sql($query);
+  }
+
+  function buscarPorPeriodoMateria($aguja){
     $query =  $this->BASEQUERY ."
     AND s.id_prd_lectivo = $aguja[0] 
     AND s.id_materia = $aguja[1]
     ". $this->ENDQUERY;
 
+    return $this->sql($query);
+  }
+
+  function buscarPorDoncente($identificacion){
+    $query =  $this->BASEQUERY .'
+    AND c.id_curso IN (
+      SELECT id_curso 
+      FROM public."Cursos" cr,
+      public."Docentes" d,
+      public."Personas" p
+      WHERE p.persona_identificacion = \''.$identificacion.'\'
+      AND d.id_persona = p.id_persona 
+      AND c.id_docente = d.id_docente
+    ) 
+    '. $this->ENDQUERY;
+
+    return $this->sql($query);
+  }
+
+  function buscarPorCurso($id_curso){
+    $query = $this->BASEQUERY . "
+    AND c.id_curso = $id_curso
+    ".$this->ENDQUERY;
     return $this->sql($query);
   }
 

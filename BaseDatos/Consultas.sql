@@ -9,6 +9,7 @@ c.id_curso,
 curso_nombre,
 curso_ciclo, 
 curso_capacidad,
+m.id_materia,
 materia_nombre
 FROM
 public."Cursos" c, public."Personas" p,
@@ -72,3 +73,43 @@ prd_lectivo_nombre,
 materia_nombre,
 estado_silabo
 ORDER BY prd_lectivo_nombre
+
+--Consulta para alumnos 
+
+SELECT 
+a.id_alumno,
+p.id_persona,
+persona_primer_nombre,
+persona_primer_apellido, 
+persona_correo,
+persona_celular,
+persona_telefono
+FROM 
+public."Alumnos" a, public."Personas" p
+WHERE
+p.id_persona = a.id_persona 
+
+ORDER BY 
+persona_primer_apellido,
+persona_segundo_apellido
+
+--Consultamos las carreras
+
+SELECT 
+id_carrera,
+carrera_nombre, 
+carrera_codigo
+FROM public."Carreras"
+WHERE carrera_activa = true
+ORDER BY carrera_codigo;
+
+--Consultamos los periodos 
+
+SELECT
+id_prd_lectivo,
+prd_lectivo_nombre
+FROM public."PeriodoLectivo"
+WHERE prd_lectivo_activo = true
+ORDER BY 
+prd_lectivo_nombre,
+prd_lectivo_fecha_fin DESC;

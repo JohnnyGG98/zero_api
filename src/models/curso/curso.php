@@ -1,5 +1,6 @@
 <?php 
 include_once 'src/bd/condb.php';
+include_once 'src/utils/utils.php';
 
 class Curso extends ConDB {
 
@@ -13,6 +14,7 @@ class Curso extends ConDB {
   curso_nombre,
   curso_ciclo, 
   curso_capacidad,
+  m.id_materia,
   materia_nombre
   FROM
   public."Cursos" c, public."Personas" p,
@@ -25,6 +27,7 @@ class Curso extends ConDB {
   m.id_materia = c.id_materia
   ';
   private $ENDQUERY = '
+  AND curso_activo = true
   ORDER BY prd_lectivo_nombre
   ';
 
@@ -39,8 +42,43 @@ class Curso extends ConDB {
     return $this->sql($query);
   }
 
-  function cargarCursosPorPrd() {
+  function buscar($id_curso){
+    $query = $this->BASEQUERY . " 
+      AND c.id_curso = $id_curso
+    " . $this->ENDQUERY;
+    return $this->sql($query);
+  }
 
+  function buscarPorAlumno($aguja){
+    $query = $this->BASEQUERY . ' 
+      AND c.id_curso IN (
+        SELECT id_curso
+        FROM public."AlumnoCurso"
+        WHERE id_alumno IN (
+          SELECT id_alumno
+          FROM public."Alumnos" a, public."Personas" p
+          WHERE 
+          a.id_persona = p.id_persona AND (
+            '.BDUQuerys::buscarPersona($aguja).'
+          )
+        )
+      )
+    ' . $this->ENDQUERY;
+    return $this->sql($query);
+  }
+
+  function cargarPorDoncente($identificacion){
+    $query = $this->BASEQUERY . " 
+      AND p.persona_identificacion = '$identificacion'
+    " . $this->ENDQUERY;
+    return $this->sql($query);
+  }
+
+  function cargarCursosPorPeriodo($id_periodo) {
+    $query = $this->BASEQUERY . " 
+      AND c.id_prd_lectivo = $id_periodo
+    " . $this->ENDQUERY;
+    return $this->sql($query);
   }
 
   function buscarCursos($aguja) {

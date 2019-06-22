@@ -7,7 +7,7 @@ class Persona extends ConDB {
   
   ';
   private $ENDQUERY = '
-  ORDER BY prd_lectivo_nombre
+  
   ';
 
   public function __construct() {

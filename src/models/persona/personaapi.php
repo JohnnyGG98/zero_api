@@ -54,20 +54,6 @@ class PersonaAPI extends Api {
       }
     }
   }
-  
-  
-  function obtenerJSON($res){
-    if($res != null){
-      if($res->rowCount()) {
-
-
-      }else{
-        $this->error('No pudimos encontrar cursos.');
-      }
-    } else {
-      $this->error('No pudimos consultar.');
-    }
-  }
 
 }
 

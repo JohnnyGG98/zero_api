@@ -22,8 +22,8 @@ class CursoAPI extends Api {
     $this->muestraJSON($this->obtenerJSON($res));
   } 
 
-  function docente($identificacion) {
-    $res = $this->curso->cargarPorDoncente($identificacion);
+  function docente($aguja) {
+    $res = $this->curso->cargarPorDoncente($aguja);
 
     $this->muestraJSON($this->obtenerJSON($res));
   } 

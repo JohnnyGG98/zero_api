@@ -67,9 +67,11 @@ class Curso extends ConDB {
     return $this->sql($query);
   }
 
-  function cargarPorDoncente($identificacion){
+  function cargarPorDoncente($aguja){
     $query = $this->BASEQUERY . " 
-      AND p.persona_identificacion = '$identificacion'
+      AND (
+        '.BDUQuerys::buscarPersona($aguja).'
+      )
     " . $this->ENDQUERY;
     return $this->sql($query);
   }

@@ -97,10 +97,10 @@ class Silabo extends ConDB {
     return $this->sql($query);
   }
 
-  function cargarPDF() {
+  function cargarPDF($id_silabo) {
     $query =  '
     SELECT encode(documento_silabo, \'base64\') as pdf  FROM public."Silabo" 
-    WHERE id_silabo = 3936
+    WHERE id_silabo = '.$id_silabo.'
     ';
     return $this->sql($query);
   }

@@ -45,8 +45,8 @@ class SilaboAPI extends Api {
     $this->muestraJSON($this->obtenerJSON($res));
   }
 
-  function pdf(){
-    $res = $this->silabo->cargarPDF();
+  function pdf($id_silabo){
+    $res = $this->silabo->cargarPDF($id_silabo);
     $this->muestraJSON($this->obtenerPdf($res));
   }
 
@@ -57,10 +57,9 @@ class SilaboAPI extends Api {
     if($id_silabo != null){
       echo "<h1>NOOOO PODESSSSS</h1>";
     }else{
-      $res = $this->silabo->cargarPDF();
+      $res = $this->silabo->cargarPDF($id_silabo);
       $this->mostrarPDF($res);
     }
-    //$this->muestraJSON($this->obtenerJSON($res));
   }
 
   function mostrarPDF($res){

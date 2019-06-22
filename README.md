@@ -17,40 +17,45 @@ Iniciar el servidor en Xamp
 Escribir en el navegador **locahost/zero_api/** nos debe aparecer un mensaje indicandonos que no tenemos un url. 
 
 ### URL en funcionamiento
-- **Carreras**
-  1. /carrera/todos/
-  2. /carrera/buscar/{aguja}
-  3. /carrera/buscar/{id_carrera}
-- **Periodos**
-  1. /periodo/todos/
-  2. /periodo/buscar/{aguja}
-  3. /periodo/buscar/{id_periodo}
-  4. /periodo/carrera/{id_carrera}
-- **Cursos**
-  1. /curso/todos/
-  1. /curso/buscar/{aguja}
-  1. /curso/buscar/{id_curso}
-  2. /curso/periodo/{id_periodo}
-  3. /curso/docente/{aguja}
-  4. /curso/alumno/{aguja}
-- **Persona**
-  1. /persona/foto/{identificacion}
-  2. /persona/verfoto/{identificacion}
-- **Alumnos**
-  1. /alumno/todos/
-  2. /alumno/curso/{id_curso}
-  3. /alumno/buscar/{id_alumno}
-  4. /alumno/buscar/{aguja}
-- **Silabos**
-  1. /silabo/todos/
-  2. /silabo/buscar/{id_silabo}
-  3. /silabo/buscar/{aguja}
-  4. /silabo/periodo/{id_periodo}
-  5. /silabo/materia/{id_materia}
-  6. /silabo/docente/{identificacion}
-  7. /silabo/curso/{id_curso}
-  8. /silabo/pdf/{id_silabo}
-  9. /silabo/verpdf/{id_silabo}
+**Carreras**
+1. /carrera/todos/
+2. /carrera/buscar/{aguja}
+3. /carrera/buscar/{id_carrera}
+
+**Periodos**
+1. /periodo/todos/
+2. /periodo/buscar/{aguja}
+3. /periodo/buscar/{id_periodo}
+4. /periodo/carrera/{id_carrera}
+
+**Cursos**
+1. /curso/todos/
+1. /curso/buscar/{aguja}
+1. /curso/buscar/{id_curso}
+2. /curso/periodo/{id_periodo}
+3. /curso/docente/{aguja}
+4. /curso/alumno/{aguja}
+
+**Persona**
+1. /persona/foto/{identificacion}
+2. /persona/verfoto/{identificacion}
+
+**Alumnos**
+1. /alumno/todos/
+2. /alumno/curso/{id_curso}
+3. /alumno/buscar/{id_alumno}
+4. /alumno/buscar/{aguja}
+
+**Silabos**
+1. /silabo/todos/
+2. /silabo/buscar/{id_silabo}
+3. /silabo/buscar/{aguja}
+4. /silabo/periodo/{id_periodo}
+5. /silabo/materia/{id_materia}
+6. /silabo/docente/{identificacion}
+7. /silabo/curso/{id_curso}
+8. /silabo/pdf/{id_silabo}
+9. /silabo/verpdf/{id_silabo}
 
 ### Como agregar mas funcionalidad
 - **General**

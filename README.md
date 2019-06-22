@@ -16,7 +16,10 @@ Con esta API unicamente consultamos informacion.
 Iniciar el servidor en Xamp 
 Escribir en el navegador **locahost/zero_api/** nos debe aparecer un mensaje indicandonos que no tenemos un url. 
 
-### URL en funcionamiento
+### Rutas en funcionamiento
+
+Recuerden que antes de cada rura deben escribir **locahost/zero_api/**
+
 **Carreras**
 1. /carrera/todos/
 2. /carrera/buscar/{aguja}

@@ -14,11 +14,11 @@ Con esta API unicamente consultamos informacion.
 
 ### Como usarla
 Iniciar el servidor en Xamp 
-Escribir en el navegador **locahost/zero_api/** nos debe aparecer un mensaje indicandonos que no tenemos un url. 
+Escribir en el navegador **localhost/zero_api/** nos debe aparecer un mensaje indicandonos que no tenemos un url. 
 
 ### Rutas en funcionamiento
 
-Recuerden que antes de cada rura deben escribir **locahost/zero_api/**
+Recuerden que antes de cada rura deben escribir **localhost/zero_api**
 
 **Carreras**
 1. /carrera/todos/

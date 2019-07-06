@@ -50,6 +50,16 @@ class SilaboAPI extends Api {
     $this->muestraJSON($this->obtenerPdf($res));
   }
 
+  function actividades($id_silabo = 0){
+    if($id_silabo == 0){
+      $this->error('No se especifico un silabo');
+    }else{
+      $res = $this->silabo->buscarActividadesSilabo($id_silabo);
+      $this->muestraJSON($this->obtenerJSONActividades($res));
+    }
+    
+  }
+
   /**
    * El 0 indica que es null y no se le pasaron parametros
    */
@@ -115,6 +125,33 @@ class SilaboAPI extends Api {
           array_push($silabos['items'], $i);
         }
         return $silabos;
+      }else{
+        $this->error('No pudimos encontrar cursos.');
+      }
+    } else {
+      $this->error('No pudimos consultar.');
+    }
+  }
+
+  function obtenerJSONActividades($res){
+    if($res != null){
+      if($res->rowCount()) {
+        $actividades = array(); 
+        $actividades['items'] = array();
+
+        while($r = $res->fetch(PDO::FETCH_ASSOC)){
+          $i = array(
+            'numero_unidad' => $r['numero_unidad'],
+            'titulo_unidad' => $r['titulo_unidad'],
+            'indicador' => $r['indicador'],
+            'instrumento' => $r['instrumento'],
+            'valoracion' => $r['valoracion'],
+            'fecha_envio' => $r['fecha_envio'],
+            'fecha_presentacion' => $r['fecha_presentacion']
+          );
+          array_push($actividades['items'], $i);
+        }
+        return $actividades;
       }else{
         $this->error('No pudimos encontrar cursos.');
       }

@@ -86,6 +86,8 @@ class Curso extends ConDB {
   function buscarCursos($aguja) {
     $query = $this->BASEQUERY." AND (
       curso_nombre ILIKE '%$aguja%'
+      OR ".BDUQuerys::buscarPersona($aguja)." 
+      OR materia_nombre ILIKE '%$aguja%' 
     )".' '. $this->ENDQUERY;
     return $this->sql($query);
   }

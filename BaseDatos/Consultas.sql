@@ -113,3 +113,47 @@ WHERE prd_lectivo_activo = true
 ORDER BY 
 prd_lectivo_nombre,
 prd_lectivo_fecha_fin DESC;
+
+--Consultamos las actividades
+
+SELECT 
+numero_unidad,
+titulo_unidad, 
+us.id_unidad, 
+indicador, 
+ta.id_tipo_actividad, 
+instrumento, 
+valoracion,
+fecha_envio,
+fecha_presentacion,
+nombre_tipo_actividad,
+nombre_subtipo_actividad
+FROM 
+public."UnidadSilabo" us, 
+public."EvaluacionSilabo" es,
+public."TipoActividad" ta
+WHERE 
+us.id_silabo = 3225 AND 
+us.id_unidad = es.id_unidad AND 
+ta.id_tipo_actividad = es.id_tipo_actividad
+
+--Este no contiene el tipo de actividad 
+
+SELECT 
+numero_unidad,
+titulo_unidad, 
+us.id_unidad, 
+indicador,
+instrumento, 
+valoracion,
+fecha_envio,
+fecha_presentacion
+FROM 
+public."UnidadSilabo" us, 
+public."EvaluacionSilabo" es
+WHERE 
+us.id_silabo = 3225 AND 
+us.id_unidad = es.id_unidad
+ORDER BY fecha_envio, fecha_presentacion
+
+

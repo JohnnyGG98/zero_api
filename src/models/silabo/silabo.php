@@ -104,6 +104,28 @@ class Silabo extends ConDB {
     ';
     return $this->sql($query);
   }
+
+  function buscarActividadesSilabo($id_silabo) {
+    $query = '      
+    SELECT 
+    numero_unidad,
+    titulo_unidad, 
+    us.id_unidad, 
+    indicador,
+    instrumento, 
+    valoracion,
+    fecha_envio,
+    fecha_presentacion
+    FROM 
+    public."UnidadSilabo" us, 
+    public."EvaluacionSilabo" es
+    WHERE 
+    us.id_silabo = '.$id_silabo.' AND 
+    us.id_unidad = es.id_unidad
+    ORDER BY fecha_envio, fecha_presentacion
+    ';
+    return $this->sql($query);
+  }
   
 }
 

@@ -5,16 +5,16 @@ API creada en PHP 7, para consumir informacion de Zero (PF-Instituto-M3A-F1).
 Con esta API unicamente consultamos informacion.
 
 ### Avances
-1. Consultas de Carreras. 
-2. Consultas de Periodos. 
-3. Consultas de Cursos. 
+1. Consultas de Carreras.
+2. Consultas de Periodos.
+3. Consultas de Cursos.
 4. Consultas de Persona(Solo foto).
-5. Consulta de Alumnos. 
+5. Consulta de Alumnos.
 6. Consulta de Silabos.
 
 ### Como usarla
-Iniciar el servidor en Xamp 
-Escribir en el navegador **localhost/zero_api/** nos debe aparecer un mensaje indicandonos que no tenemos un url. 
+Iniciar el servidor en Xamp
+Escribir en el navegador **localhost/zero_api/** nos debe aparecer un mensaje indicandonos que no tenemos un url.
 
 ### Rutas en funcionamiento
 
@@ -38,6 +38,8 @@ Recuerden que antes de cada rura deben escribir **localhost/zero_api**
 2. /curso/periodo/{id_periodo}
 3. /curso/docente/{aguja}
 4. /curso/alumno/{aguja}
+5. /curso/nombre/{id_periodo}
+6. /curso/materia/{curso_nombre}-{id_periodo}
 
 **Persona**
 1. /persona/foto/{identificacion}
@@ -63,9 +65,9 @@ Recuerden que antes de cada rura deben escribir **localhost/zero_api**
 ### Como agregar mas funcionalidad
 - **General**
   - Todos los nombres de archivos escribirlos en minuscula.
-  - Todos los modelos deben extender de ConDB. 
-  - Todas las Api deben extender de API. 
+  - Todos los modelos deben extender de ConDB.
+  - Todas las Api deben extender de API.
 - **Modelo**
   - En la carpeta models, crear dos archivos. modelo.php modeloapi.php.
-  - Estos dos archivos deben tener esta sintaxis. 
+  - Estos dos archivos deben tener esta sintaxis.
   - En el constructor de cada modeloapi.php iniciar el modelo correspondiente.

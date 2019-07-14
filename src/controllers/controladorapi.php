@@ -1,7 +1,7 @@
 <?php
 
 class ControladorAPI {
-  
+
   function __construct(){
     //obtenerUrl();
   }
@@ -15,7 +15,7 @@ class ControladorAPI {
 
       if(isset($url[0])){
         $this->cargarClase($url);
-      } 
+      }
 
     }else{
       echo "<h2>No tenemos url</h2>";
@@ -26,13 +26,13 @@ class ControladorAPI {
     $nombre = $url[0];
     $dir = 'src/models/'.$nombre.'/'.$nombre.'api.php';
     if(file_exists($dir)){
-      require_once $dir; 
+      require_once $dir;
       $nombre = $nombre . 'API';
       $modelo = new $nombre();
       if(isset($url[1])){
         $this->llamarMetodo($url, $modelo);
       }
-      
+
     }else{
       echo "<h1>No pudimos obtener la clase</h1>";
     }

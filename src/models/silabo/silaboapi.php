@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once 'silabo.php';
 include_once 'src/api/api.php';
 
@@ -7,7 +7,7 @@ class SilaboAPI extends Api {
   private $silabo;
 
   function __construct(){
-    $this->silabo = new Silabo(); 
+    $this->silabo = new Silabo();
   }
 
   function todos(){
@@ -57,14 +57,14 @@ class SilaboAPI extends Api {
       $res = $this->silabo->buscarActividadesSilabo($id_silabo);
       $this->muestraJSON($this->obtenerJSONActividades($res));
     }
-    
+
   }
 
   /**
    * El 0 indica que es null y no se le pasaron parametros
    */
   function verPdf($id_silabo = 0){
-    if($id_silabo != null){
+    if($id_silabo == null){
       echo "<h1>NOOOO PODESSSSS</h1>";
     }else{
       $res = $this->silabo->cargarPDF($id_silabo);
@@ -89,8 +89,8 @@ class SilaboAPI extends Api {
   function obtenerPdf($res){
     if($res != null){
       if($res->rowCount()) {
-        $pdf = array(); 
-        $pdf['items'] = array(); 
+        $pdf = array();
+        $pdf['items'] = array();
 
         while ($r = $res->fetch(PDO::FETCH_ASSOC)) {
           $i = array(
@@ -111,7 +111,7 @@ class SilaboAPI extends Api {
   function obtenerJSON($res){
     if($res != null){
       if($res->rowCount()) {
-        $silabos = array(); 
+        $silabos = array();
         $silabos['items'] = array();
 
         while($r = $res->fetch(PDO::FETCH_ASSOC)){
@@ -136,7 +136,7 @@ class SilaboAPI extends Api {
   function obtenerJSONActividades($res){
     if($res != null){
       if($res->rowCount()) {
-        $actividades = array(); 
+        $actividades = array();
         $actividades['items'] = array();
 
         while($r = $res->fetch(PDO::FETCH_ASSOC)){

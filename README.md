@@ -36,6 +36,7 @@ Recuerden que antes de cada rura deben escribir **localhost/zero_api**
 1. /curso/buscar/{aguja}
 1. /curso/buscar/{id_curso}
 2. /curso/periodo/{id_periodo}
+2. /curso/periodo/{curso_nombre}-{id_periodo}
 3. /curso/docente/{aguja}
 4. /curso/alumno/{aguja}
 5. /curso/nombre/{id_periodo}

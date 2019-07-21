@@ -17,7 +17,12 @@ class CursoAPI extends Api {
   }
 
   function periodo($id_periodo) {
-    $res = $this->curso->cargarCursosPorPeriodo($id_periodo);
+    $res = null;
+    if(ctype_digit($id_periodo)){
+      $res = $this->curso->cargarCursosPorPeriodo($id_periodo);
+    }else{
+      $res = $this->curso->cargarCursosPorNombrePeriodo($id_periodo[0], $id_periodo[1]);
+    }
 
     $this->muestraJSON($this->obtenerJSON($res));
   }

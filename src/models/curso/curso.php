@@ -83,6 +83,14 @@ class Curso extends ConDB {
     return $this->sql($query);
   }
 
+  function cargarCursosPorNombrePeriodo($curso_nombre, $id_periodo) {
+    $query = $this->BASEQUERY . "
+    AND c.curso_nombre ILIKE '%$curso_nombre%'
+    AND c.id_prd_lectivo = $id_periodo
+    " . $this->ENDQUERY;
+    return $this->sql($query);
+  }
+
   function buscarCursos($aguja) {
     $query = $this->BASEQUERY." AND (
       curso_nombre ILIKE '%$aguja%'

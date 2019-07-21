@@ -59,6 +59,7 @@ Recuerden que antes de cada rura deben escribir **localhost/zero_api**
 5. /silabo/materia/{id_materia}
 6. /silabo/docente/{identificacion}
 7. /silabo/curso/{id_curso}
+7. /silabo/curso/{curos_nombre}-{id_periodo}
 8. /silabo/pdf/{id_silabo}
 9. /silabo/verpdf/{id_silabo}
 

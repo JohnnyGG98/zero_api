@@ -41,7 +41,13 @@ class SilaboAPI extends Api {
   }
 
   function curso($id_curso){
-    $res = $this->silabo->buscarPorCurso($id_curso);
+    $res = null;
+    if(ctype_digit($id_curso)){
+      $res = $this->silabo->buscarPorCurso($id_curso);
+    }else{
+      $res = $this->silabo->buscarPorCursoNombrePeriodo($id_curso[0], $id_curso[1]);
+    }
+
     $this->muestraJSON($this->obtenerJSON($res));
   }
 

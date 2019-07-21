@@ -1,26 +1,26 @@
-<?php 
+<?php
 include_once 'src/bd/condb.php';
 
 class Silabo extends ConDB {
 
   private $BASEQUERY = '
-    SELECT 
+    SELECT
     s.id_silabo,
     prd_lectivo_nombre,
-    materia_nombre, 
+    materia_nombre,
     estado_silabo,
       STRING_AGG(
         curso_nombre, \', \'
       ) cursos
-    FROM 
+    FROM
     public."Silabo" s, public."Materias" m,
     public."PeriodoLectivo" pl, public."Cursos" c
-    WHERE 
-    pl.id_prd_lectivo = s.id_prd_lectivo AND 
-    m.id_materia = s.id_materia AND 
+    WHERE
+    pl.id_prd_lectivo = s.id_prd_lectivo AND
+    m.id_materia = s.id_materia AND
     c.id_materia = s.id_materia AND
     c.id_prd_lectivo = s.id_prd_lectivo
-    
+
   ';
   private $ENDQUERY = '
     GROUP BY
@@ -51,7 +51,7 @@ class Silabo extends ConDB {
 
   function buscarPorPeriodoMateria($aguja){
     $query =  $this->BASEQUERY ."
-    AND s.id_prd_lectivo = $aguja[0] 
+    AND s.id_prd_lectivo = $aguja[0]
     AND s.id_materia = $aguja[1]
     ". $this->ENDQUERY;
 
@@ -61,14 +61,14 @@ class Silabo extends ConDB {
   function buscarPorDoncente($identificacion){
     $query =  $this->BASEQUERY .'
     AND c.id_curso IN (
-      SELECT id_curso 
+      SELECT id_curso
       FROM public."Cursos" cr,
       public."Docentes" d,
       public."Personas" p
       WHERE p.persona_identificacion = \''.$identificacion.'\'
-      AND d.id_persona = p.id_persona 
+      AND d.id_persona = p.id_persona
       AND c.id_docente = d.id_docente
-    ) 
+    )
     '. $this->ENDQUERY;
 
     return $this->sql($query);
@@ -77,6 +77,14 @@ class Silabo extends ConDB {
   function buscarPorCurso($id_curso){
     $query = $this->BASEQUERY . "
     AND c.id_curso = $id_curso
+    ".$this->ENDQUERY;
+    return $this->sql($query);
+  }
+
+  function buscarPorCursoNombrePeriodo($cursoNombre, $idPeriodo){
+    $query = $this->BASEQUERY . "
+    AND c.curso_nombre ILIKE '%".$cursoNombre."%'
+    AND pl.id_prd_lectivo = ".$idPeriodo."
     ".$this->ENDQUERY;
     return $this->sql($query);
   }
@@ -99,34 +107,34 @@ class Silabo extends ConDB {
 
   function cargarPDF($id_silabo) {
     $query =  '
-    SELECT encode(documento_silabo, \'base64\') as pdf  FROM public."Silabo" 
+    SELECT encode(documento_silabo, \'base64\') as pdf  FROM public."Silabo"
     WHERE id_silabo = '.$id_silabo.'
     ';
     return $this->sql($query);
   }
 
   function buscarActividadesSilabo($id_silabo) {
-    $query = '      
-    SELECT 
+    $query = '
+    SELECT
     numero_unidad,
-    titulo_unidad, 
-    us.id_unidad, 
+    titulo_unidad,
+    us.id_unidad,
     indicador,
-    instrumento, 
+    instrumento,
     valoracion,
     fecha_envio,
     fecha_presentacion
-    FROM 
-    public."UnidadSilabo" us, 
+    FROM
+    public."UnidadSilabo" us,
     public."EvaluacionSilabo" es
-    WHERE 
-    us.id_silabo = '.$id_silabo.' AND 
+    WHERE
+    us.id_silabo = '.$id_silabo.' AND
     us.id_unidad = es.id_unidad
     ORDER BY fecha_envio, fecha_presentacion
     ';
     return $this->sql($query);
   }
-  
+
 }
 
 ?>

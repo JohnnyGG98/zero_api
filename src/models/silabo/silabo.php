@@ -19,8 +19,8 @@ class Silabo extends ConDB {
     pl.id_prd_lectivo = s.id_prd_lectivo AND
     m.id_materia = s.id_materia AND
     c.id_materia = s.id_materia AND
-    c.id_prd_lectivo = s.id_prd_lectivo
-
+    c.id_prd_lectivo = s.id_prd_lectivo AND
+    estado_silabo = 1
   ';
   private $ENDQUERY = '
     GROUP BY

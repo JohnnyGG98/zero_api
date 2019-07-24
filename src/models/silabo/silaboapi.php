@@ -132,7 +132,7 @@ class SilaboAPI extends Api {
         }
         return $silabos;
       }else{
-        $this->error('No pudimos encontrar cursos.');
+        $this->error('No pudimos encontrar actividades.');
       }
     } else {
       $this->error('No pudimos consultar.');
@@ -149,6 +149,7 @@ class SilaboAPI extends Api {
           $i = array(
             'numero_unidad' => $r['numero_unidad'],
             'titulo_unidad' => $r['titulo_unidad'],
+            'id_unidad' => $r['id_unidad'],
             'indicador' => $r['indicador'],
             'instrumento' => $r['instrumento'],
             'valoracion' => $r['valoracion'],
@@ -159,7 +160,7 @@ class SilaboAPI extends Api {
         }
         return $actividades;
       }else{
-        $this->error('No pudimos encontrar cursos.');
+        $this->error('No se encontraron actividades.');
       }
     } else {
       $this->error('No pudimos consultar.');

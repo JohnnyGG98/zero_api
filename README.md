@@ -54,6 +54,7 @@ Recuerden que antes de cada rura deben escribir **localhost/zero_api**
 
 **Silabos**
 1. /silabo/todos/
+1. /silabo/actividades/{id_silabo}
 2. /silabo/buscar/{id_silabo}
 3. /silabo/buscar/{aguja}
 4. /silabo/periodo/{id_periodo}
